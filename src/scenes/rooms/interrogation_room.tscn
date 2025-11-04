@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4u7ql6i3s7bu"]
+[gd_scene load_steps=5 format=3 uid="uid://c4u7ql6i3s7bu"]
 
 [ext_resource type="PackedScene" uid="uid://cq1v33lmadmcd" path="res://scenes/objects/door.tscn" id="2_13bab"]
+[ext_resource type="Texture2D" uid="uid://dhen58e6khlm0" path="res://assets/ui/Paper9Slice.png" id="2_ojdsf"]
 [ext_resource type="Texture2D" uid="uid://mecr3f443kgk" path="res://assets/ui/PurpleBubble9Slice.png" id="3_m0xdu"]
+[ext_resource type="PackedScene" uid="uid://d3usjuo7k3r75" path="res://scenes/objects/statment.tscn" id="3_ojdsf"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,11 +11,20 @@
 position = Vector2(354, 255)
 door_id = "a1"
 target_scene = "res://scenes/rooms/room_a1.tscn"
+locked_sprite = ExtResource("2_ojdsf")
 unlocked_sprite = ExtResource("3_m0xdu")
-start_unlocked = true
 
 [node name="CollisionShape2D" parent="Door/Area2D" index="0"]
 position = Vector2(-0.5, 1.5)
+
+[node name="Statment" parent="." instance=ExtResource("3_ojdsf")]
+offset_left = 423.0
+offset_top = 175.0
+offset_right = 514.0
+offset_bottom = 206.0
+is_in_ui = null
+id = null
+statement_text = null
 
 [connection signal="input_event" from="Door/Area2D" to="Door" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Door/Area2D" to="Door" method="_on_area_2d_mouse_entered"]

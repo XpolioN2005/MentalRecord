@@ -1,5 +1,6 @@
 extends Node2D
-# Door behavior for locking/unlocking and transitioning rooms
+class_name Door
+# Handles door locking, unlocking, and scene transitions.
 
 # --- exported variables ---
 @export var door_id: String
@@ -7,53 +8,78 @@ extends Node2D
 @export var locked_sprite: Texture2D
 @export var unlocked_sprite: Texture2D
 @export var start_unlocked: bool
+@export var statement_to_unloak: String = "Statement"
 
 # --- onready variables ---
-@onready var sprite = $Sprite2D
-@onready var area = $Area2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var area: Area2D = $Area2D
 
 # --- built-in methods ---
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("doors")
 	update_visual()
 	SignalBus.door_state_changed.connect(received_update_signal)
 
 # --- public methods ---
 
-## Updates the door sprite to match its unlocked state in the InventoryManager
-func update_visual():
+## Checks if a global-space point lies within the visual bounds of this door.
+## @param point: Global mouse position or drop point.
+## @return bool: True if the point overlaps the sprite area.
+func contains_point(point: Vector2) -> bool:
+	var local_point = to_local(point)
+	var tex_size = sprite.texture.get_size() * sprite.scale
+	var rect = Rect2(-tex_size * 0.5, tex_size)
+	return rect.has_point(local_point)
+
+## Updates the door sprite to match its current locked/unlocked state.
+func update_visual() -> void:
 	if is_door_unlocked():
 		sprite.texture = unlocked_sprite
 	else:
 		sprite.texture = locked_sprite
 
-## Gets the unlocked state of this door
-func is_door_unlocked():
+## Returns whether this door is currently unlocked.
+## @return bool: True if door is unlocked.
+func is_door_unlocked() -> bool:
 	return start_unlocked or InventoryManager.is_door_open(door_id)
-	
+
+## Unlocks this door and updates visuals and systems.
+## Emits a signal through SignalBus to notify all doors with matching IDs.
+func unlock() -> void:
+	# Mark the door as open in the InventoryManager.
+	InventoryManager.set_door_state(door_id, true)
+
+	# Update visuals locally.
+	update_visual()
+
+	# Emit global signal for others to update.
+	if SignalBus.has_signal("door_state_changed"):
+		SignalBus.door_state_changed.emit(door_id, true)
+
 ### --- private methods ---
 
-## Fires when the mouse clicks on this object
+## Handles mouse click events on the door.
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_door_unlocked():
 			get_tree().change_scene_to_file(target_scene)
 		else:
-			# TODO - Play sound
+			# TODO: Play locked-door sound or show hint.
 			pass
 
-## Fires when the mouse hovers over the object
+## Slightly enlarges the door when hovered.
 func _on_area_2d_mouse_entered() -> void:
 	sprite.scale = Vector2(1.1, 1.1)
 
-## Fires when the mouse stops hovering over the object
+## Restores original scale when no longer hovered.
 func _on_area_2d_mouse_exited() -> void:
 	sprite.scale = Vector2(1, 1)
 
-## Updates the visual if change is signaled by door id
-## @param door_id: Unique ID of the door.
-## @param is_open: True if the door is open, false if closed.
-func received_update_signal(updated_door_id: String, _is_open: bool):
+## Responds to door-state updates from other systems via SignalBus.
+## @param updated_door_id: Unique door ID that changed.
+## @param _is_open: Whether the door is now open (unused here, handled visually).
+func received_update_signal(updated_door_id: String, _is_open: bool) -> void:
 	if door_id == updated_door_id:
 		update_visual()
