@@ -29,8 +29,12 @@ func _ready() -> void:
 func contains_point(point: Vector2) -> bool:
 	var local_point = to_local(point)
 	var tex_size = sprite.texture.get_size() * sprite.scale
-	var rect = Rect2(-tex_size * 0.5, tex_size)
+	
+	var buffer = Vector2(10, 10) # 10 pixels extra on width and height
+	var rect = Rect2(-tex_size * 0.5 - buffer * 0.5, tex_size + buffer)
+	
 	return rect.has_point(local_point)
+
 
 ## Updates the door sprite to match its current locked/unlocked state.
 func update_visual() -> void:
@@ -82,3 +86,11 @@ func _on_area_2d_mouse_exited() -> void:
 func received_update_signal(updated_door_id: String, _is_open: bool) -> void:
 	if door_id == updated_door_id:
 		update_visual()
+
+# for debug
+# func _draw():
+# 	if sprite.texture:
+# 		var tex_size = sprite.texture.get_size() * sprite.scale
+# 		var buffer = Vector2(10, 10) # 10 pixels extra on width and height
+# 		var rect = Rect2(-tex_size * 0.5 - buffer * 0.5, tex_size + buffer)
+# 		draw_rect(rect, Color(1, 0, 0, 0.5), false) # red outline
