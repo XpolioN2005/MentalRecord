@@ -26,6 +26,7 @@ func _ready() -> void:
 ## Checks if a global-space point lies within the visual bounds of this door.
 ## @param point: Global mouse position or drop point.
 ## @return bool: True if the point overlaps the sprite area.
+# ? Should I make it check if rect intersect? i think that will be better for players
 func contains_point(point: Vector2) -> bool:
 	var local_point = to_local(point)
 	var tex_size = sprite.texture.get_size() * sprite.scale
