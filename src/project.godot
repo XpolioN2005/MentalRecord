@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mental Record"
-run/main_scene="uid://c4u7ql6i3s7bu"
+run/main_scene="uid://qwnvu8ckkpcy"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InventoryManager="*res://scripts/autoload/inventory_manager.gd"
 SignalBus="*res://scripts/autoload/signal_bus.gd"
+SceneManager="*res://scripts/autoload/scene_manager.gd"
 
 [display]
 
