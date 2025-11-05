@@ -8,7 +8,7 @@ class_name Door
 @export var locked_sprite: Texture2D
 @export var unlocked_sprite: Texture2D
 @export var start_unlocked: bool
-@export var statement_to_unlock: String = "Statement"
+@export var statement_id_to_unlock: String = "StatementID"
 
 # --- onready variables ---
 @onready var sprite: Sprite2D = $Sprite2D
@@ -68,7 +68,7 @@ func unlock() -> void:
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_door_unlocked():
-			get_tree().change_scene_to_file(target_scene)
+			SceneManager.change_room(target_scene)
 		else:
 			# TODO: Play locked-door sound or show hint.
 			pass
