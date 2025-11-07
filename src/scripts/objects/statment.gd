@@ -3,9 +3,10 @@ class_name Statement
 # Represents a draggable statement button that can be dropped on a Door to unlock it.
 
 # --- exported variables ---
-@export var is_in_ui: bool = false
+@export var is_collected: bool = false
 @export var id: String = ""
 @export var statement_text: String = "Statement"
+@export var default_meta: Dictionary = {}
 
 # --- internal state ---
 var is_dragging: bool = false
@@ -16,6 +17,8 @@ var _return_tween = null  # SceneTreeTween | null
 # --- built-in methods ---
 
 func _ready() -> void:
+	if InventoryManager.has_dialogue(id):
+		queue_free()
 	text = statement_text
 	original_pos = global_position
 
@@ -27,13 +30,13 @@ func _process(_delta: float) -> void:
 
 ## If the statement is not yet in the UI layer, marks it as active in the UI.
 func _on_pressed() -> void:
-	if is_in_ui:
+	if is_collected:
 		return
 	_set_to_ui()
 
 ## Starts dragging if the statement is already in the UI.
 func _on_button_down() -> void:
-	if not is_in_ui:
+	if not is_collected:
 		return
 	is_dragging = true
 	original_pos = global_position
@@ -46,7 +49,7 @@ func _on_button_down() -> void:
 
 ## Stops dragging and attempts to drop the statement on a Door.
 func _on_button_up() -> void:
-	if not is_in_ui:
+	if not is_collected:
 		return
 	if is_dragging:
 		is_dragging = false
@@ -102,6 +105,21 @@ func _on_return_tween_finished() -> void:
 ## Marks this statement as part of the UI.  
 ## Typically called when first clicked in a non-UI context.
 func _set_to_ui() -> void:
-	is_in_ui = true
+	is_collected = true
 	var inv = get_tree().get_first_node_in_group("inventory")
-	inv.add_statement(self)
+	if inv != null and inv.has_method("add_statement"):
+		inv.add_statement(self)
+	# Register dialogue/meta as collected immediately
+	_register_collected_dialogue()
+
+
+## Registers this statement as a collected dialogue
+func _register_collected_dialogue() -> void:
+	var meta: Dictionary = default_meta.duplicate()
+	meta["collected"] = true
+	meta["statement_id"] = id
+	meta["statement_text"] = statement_text
+
+	var dialogue_id = id
+
+	InventoryManager.add_dialogue(dialogue_id, meta.duplicate())
