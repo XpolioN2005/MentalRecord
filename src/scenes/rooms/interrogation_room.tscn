@@ -25,18 +25,22 @@ material = ExtResource("4_xwctq")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Statment" parent="CanvasLayer" instance=ExtResource("5_xwctq")]
-offset_left = -336.0
-offset_top = -321.0
-offset_right = -245.0
-offset_bottom = -290.0
+offset_left = 685.0
+offset_top = 347.0
+offset_right = 776.0
+offset_bottom = 378.0
+grow_horizontal = 1
+grow_vertical = 1
 id = "sa1"
 
 [node name="Statment2" parent="CanvasLayer" instance=ExtResource("5_xwctq")]
-offset_left = -377.0
-offset_top = -261.0
-offset_right = -286.0
-offset_bottom = -230.0
+offset_left = 644.0
+offset_top = 407.0
+offset_right = 735.0
+offset_bottom = 438.0
+grow_horizontal = 1
+grow_vertical = 1
 id = "sa2"
-statement_text = "wrong"
+statement_text = "Rumors about a former employee committing theft are true. The MOAO has since learned from their mistakes by investing in security technology."
 
 [editable path="Door"]

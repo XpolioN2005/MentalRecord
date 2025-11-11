@@ -109,6 +109,7 @@ func _set_to_ui() -> void:
 	var inv = get_tree().get_first_node_in_group("inventory")
 	if inv != null and inv.has_method("add_statement"):
 		inv.add_statement(self)
+		self.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	# Register dialogue/meta as collected immediately
 	_register_collected_dialogue()
 

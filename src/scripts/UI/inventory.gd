@@ -3,5 +3,5 @@ extends Control
 @onready var inv_slots: VBoxContainer = $NinePatchRect/VBoxContainer
 
 func add_statement(node: Control):
-
 	node.reparent(inv_slots,false)
+	inv_slots.move_child(node, 0)
