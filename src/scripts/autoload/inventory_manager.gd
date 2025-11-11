@@ -34,6 +34,17 @@ func remove_dialogue(dialogue_id: String) -> bool:
 	_dialogues.erase(dialogue_id)
 	SignalBus.emit_signal("dialogue_removed", dialogue_id)
 	return true
+	
+## Returns an array of collected statements
+## @param speaker_filter: The value to filter the "speaker" field by
+func get_collected_statements(speaker_filter: String = "") -> Array:
+	var results = []
+	for key in _dialogues.keys():
+		var data = _dialogues[key]
+		if data.get("collected", false):
+			if speaker_filter == "" or data.get("speaker", "") == speaker_filter:
+				results.append(data)
+	return results
 
 ## Checks if a dialogue has been collected.
 ## @param dialogue_id: The ID to check.
