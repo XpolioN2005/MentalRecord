@@ -43,10 +43,7 @@ func _input(event):
 		elif not event.pressed and is_dragging:
 			_end_drag()
 
-## Starts dragging if the statement is already in the UI.
-func _on_button_down() -> void:
-	pass
-	
+## Starts dragging if the statement is already in the UI.	
 func _start_drag() -> void:
 	if (_return_tween != null):
 		return
@@ -92,9 +89,9 @@ func _on_drop() -> void:
 		for rect in door_rects:
 			if my_rect.intersects(rect):
 				if door.statement_id_to_unlock == meta["id"]:
-					door.unlock()
 					queue_free()
 					_remove_placeholder()
+					door.unlock()
 					return
 				else:
 					_reject(door)

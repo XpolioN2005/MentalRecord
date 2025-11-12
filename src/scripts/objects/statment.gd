@@ -17,9 +17,6 @@ func _ready() -> void:
 		queue_free()
 	text = default_meta["text"]
 
-func _process(_delta: float) -> void:
-	pass
-
 # --- signal handlers ---
 
 ## Registers this statement as a collected dialogue

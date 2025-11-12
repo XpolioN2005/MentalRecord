@@ -9,6 +9,4 @@ text = "STATMENT"
 text_overrun_behavior = 3
 script = ExtResource("1_g2w7l")
 
-[connection signal="button_down" from="." to="." method="_on_button_down"]
-[connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

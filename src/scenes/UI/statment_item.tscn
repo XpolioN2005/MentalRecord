@@ -10,6 +10,4 @@ text_overrun_behavior = 4
 autowrap_mode = 3
 script = ExtResource("1_ehj32")
 
-[connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]
