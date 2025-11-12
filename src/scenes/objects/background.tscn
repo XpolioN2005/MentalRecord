@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddsqa4t3fxu0k"]
+
+[ext_resource type="Script" uid="uid://c67jsicrj4e1k" path="res://scripts/objects/background.gd" id="1_iiqoh"]
+[ext_resource type="Material" uid="uid://iych61o7e7oh" path="res://materials/line_jitter_material.tres" id="2_8u8tn"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_iiqoh")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_8u8tn")
+metadata/depth = 0.2
+
+[node name="MidgroundSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_8u8tn")
+metadata/depth = 0.5
+
+[node name="ForegroundSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_8u8tn")
+metadata/depth = 0.9

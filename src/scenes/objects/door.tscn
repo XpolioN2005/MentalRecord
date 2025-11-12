@@ -35,6 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+metadata/depth = 0.2
 
 [node name="Sprite" type="TextureRect" parent="."]
 layout_mode = 1

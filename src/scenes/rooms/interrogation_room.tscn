@@ -1,25 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4u7ql6i3s7bu"]
+[gd_scene load_steps=8 format=3 uid="uid://c4u7ql6i3s7bu"]
 
 [ext_resource type="PackedScene" uid="uid://cq1v33lmadmcd" path="res://scenes/objects/door.tscn" id="2_13bab"]
 [ext_resource type="Texture2D" uid="uid://dhen58e6khlm0" path="res://assets/ui/Paper9Slice.png" id="2_ojdsf"]
 [ext_resource type="Texture2D" uid="uid://mecr3f443kgk" path="res://assets/ui/PurpleBubble9Slice.png" id="3_m0xdu"]
 [ext_resource type="Material" uid="uid://djkj354dybgq3" path="res://materials/outline_material.tres" id="4_xwctq"]
 [ext_resource type="PackedScene" uid="uid://d3usjuo7k3r75" path="res://scenes/objects/statment.tscn" id="5_xwctq"]
+[ext_resource type="PackedScene" uid="uid://ddsqa4t3fxu0k" path="res://scenes/objects/background.tscn" id="6_lahpq"]
+[ext_resource type="Texture2D" uid="uid://bym1s8mvtlr5t" path="res://assets/backgrounds/culprit/YellowBlack.png" id="7_8l71l"]
 
 [node name="InterrogationRoom" type="Node2D"]
 
-[node name="Door" parent="." instance=ExtResource("2_13bab")]
-offset_left = 988.0
-offset_top = 539.0
-offset_right = 988.0
-offset_bottom = 539.0
+[node name="Background" parent="." instance=ExtResource("6_lahpq")]
+position = Vector2(960, 540)
+
+[node name="BackgroundSprite" parent="Background" index="0"]
+texture = ExtResource("7_8l71l")
+
+[node name="Door" parent="Background" instance=ExtResource("2_13bab")]
+offset_left = 28.0
+offset_top = -1.0
+offset_right = 28.0
+offset_bottom = -1.0
 door_id = "da1"
 target_scene = "res://scenes/rooms/room_a1.tscn"
 locked_sprite = ExtResource("2_ojdsf")
 unlocked_sprite = ExtResource("3_m0xdu")
 statement_id_to_unlock = "sa1"
+metadata/depth = 0.9
 
-[node name="Sprite" parent="Door" index="1"]
+[node name="Sprite" parent="Background/Door" index="1"]
 material = ExtResource("4_xwctq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -84,4 +93,5 @@ default_meta = {
 "text": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source."
 }
 
-[editable path="Door"]
+[editable path="Background"]
+[editable path="Background/Door"]
