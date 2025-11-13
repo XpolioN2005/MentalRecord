@@ -11,8 +11,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	# Set the start positions of each child
+	for child in get_children():
+		if child.has_meta("depth"):
+			child.set_meta("start_pos", child.position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -24,6 +26,6 @@ func _process(_delta: float) -> void:
 
 	# Apply parallax panning to children
 	for child in get_children():
-		if child is Sprite2D or child is Door:
+		if child.has_meta("depth"):
 			var depth = float(child.get_meta("depth", 1.0))
-			child.position = offset * -pan_strength * depth * viewport_size
+			child.position = child.get_meta("start_pos") + offset * -pan_strength * depth * viewport_size
