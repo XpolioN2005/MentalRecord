@@ -13,6 +13,12 @@ var _discovered_speakers: Array = []
 
 # --- public methods ---
 
+## Clears all data
+func clear_data() -> void:
+	_dialogues = {}
+	_doors = {}
+	_discovered_speakers = []
+
 ## Adds a dialogue entry if it does not already exist.
 ## @param dialogue_id: Unique ID of the dialogue.
 ## @param meta: Optional metadata for the dialogue.

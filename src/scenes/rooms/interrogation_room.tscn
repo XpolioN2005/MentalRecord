@@ -31,6 +31,7 @@ statement_id_to_unlock = "sa1"
 material = ExtResource("4_xwctq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Statment" parent="CanvasLayer" instance=ExtResource("5_xwctq")]
 offset_left = 685.0
