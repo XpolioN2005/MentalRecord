@@ -7,3 +7,5 @@ shader = ExtResource("1_lten4")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/progress = 0.0
 shader_parameter/strength = 10.0
+shader_parameter/use_top = false
+shader_parameter/use_bottom = false
