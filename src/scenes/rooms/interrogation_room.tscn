@@ -17,10 +17,10 @@ position = Vector2(960, 540)
 texture = ExtResource("7_8l71l")
 
 [node name="Door" parent="Background" instance=ExtResource("2_13bab")]
-offset_left = 28.0
-offset_top = -1.0
-offset_right = 28.0
-offset_bottom = -1.0
+offset_left = 191.0
+offset_top = 10.0
+offset_right = 191.0
+offset_bottom = 10.0
 door_id = "da1"
 target_scene = "res://scenes/rooms/room_a1.tscn"
 locked_sprite = ExtResource("2_ojdsf")
