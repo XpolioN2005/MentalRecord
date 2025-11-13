@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bb4pafgjfodo2"]
+
+[ext_resource type="Shader" uid="uid://cyn3dk4hvt3ir" path="res://shaders/room_transition.gdshader" id="1_lten4"]
+
+[resource]
+shader = ExtResource("1_lten4")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/progress = 0.0
+shader_parameter/strength = 10.0

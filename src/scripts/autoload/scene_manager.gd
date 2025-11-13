@@ -1,10 +1,13 @@
 extends Node
 # Handles switching between scenes while keeping persistent objects in root node
 
-## --- private variables ===
+## --- private variables ---
 var _current_level: Node = null
 var _default_level: String = "res://scenes/rooms/interrogation_room.tscn"
 var _level_stack: Array = []
+
+## --- onready variables ---
+@onready var _transition_rect: ColorRect = $TransitionManager/TransitionRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +21,12 @@ func load_start_room() -> void:
 	change_room(_default_level)
 
 ## Changes the room
-func change_room(scene_path: String) -> void:
+func change_room(scene_path: String, door_center: Vector2 = Vector2.ZERO) -> void:
+	# Capture current screen before unloading
+	var old_tex: Texture2D = null
+	if _current_level and is_instance_valid(_current_level):
+		old_tex = _capture_viewport_texture()
+	
 	# Remove current room
 	if _current_level and is_instance_valid(_current_level):
 		_current_level.queue_free()
@@ -33,11 +41,22 @@ func change_room(scene_path: String) -> void:
 	
 	# Send update stack signal
 	SignalBus.level_stack_updated.emit(_level_stack.size())
+	
+	# Play transition
+	if (old_tex):
+		_transition_rect.play_transition(door_center, old_tex, null, false, func():
+			pass
+		)
 
 ## Exits the current room and loads from stack
 func exit_room() -> void:
 	if _level_stack.size() <= 1:
 		return
+		
+	# Capture current screen before unloading
+	var old_tex: Texture2D = null
+	if _current_level and is_instance_valid(_current_level):
+		old_tex = _capture_viewport_texture()
 		
 	# Get new room
 	_level_stack.pop_front()
@@ -54,3 +73,16 @@ func exit_room() -> void:
 	
 	# Send update stack signal
 	SignalBus.level_stack_updated.emit(_level_stack.size())
+	
+	# Play transition
+	if (old_tex):
+		_transition_rect.play_transition(Vector2(get_viewport().size / 2), null, old_tex, true, func():
+			pass
+		)
+
+## --- private methods ---
+
+## Helper to capture the current screen as a texture
+func _capture_viewport_texture() -> Texture2D:
+	var image = get_viewport().get_texture().get_image()
+	return ImageTexture.create_from_image(image)
