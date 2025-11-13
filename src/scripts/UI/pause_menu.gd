@@ -17,5 +17,6 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	# Return to main menu
+	game.toggle_pause()
 	SceneManager.clear_rooms()
 	get_tree().change_scene_to_file(title_scene)
