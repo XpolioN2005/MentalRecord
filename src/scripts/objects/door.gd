@@ -1,6 +1,6 @@
 extends Control
 class_name Door
-# Handles door locking, unlocking, and scene transitions.
+# Handles door locking, unlocking, and scene transitions, with optional 3D anchoring.
 
 # --- exported variables ---
 @export var door_id: String
@@ -11,9 +11,14 @@ class_name Door
 @export var statement_id_to_unlock: String = "StatementID"
 @export var lie_text: String = "Lie"
 
+# Enable 3D anchoring
+@export var use_3d_anchor: bool = false
+@export var anchor_marker: Marker3D
+
 # --- onready variables ---
 @onready var sprite: TextureRect = $Sprite
 @onready var lie: Label = $Lie
+@onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 # --- built-in methods ---
 
@@ -22,6 +27,24 @@ func _ready() -> void:
 	update_visual()
 	lie.text = lie_text
 	SignalBus.door_state_changed.connect(received_update_signal)
+
+func _process(delta: float) -> void:
+	if use_3d_anchor and anchor_marker and camera:
+		update_3d_position()
+
+# --- 3D anchoring support ---
+func update_3d_position() -> void:
+	# Project the 3D marker position to screen space
+	var screen_pos = camera.unproject_position(anchor_marker.global_transform.origin)
+	
+	# Optionally hide if behind the camera
+	if screen_pos.z < 0:
+		hide()
+		return
+	
+	# Move Control to projected position
+	position = screen_pos
+	show()
 
 # --- public methods ---
 
@@ -82,7 +105,7 @@ func _on_mouse_entered() -> void:
 ## Removes outline when no longer hovered.
 func _on_mouse_exited() -> void:
 	if sprite.material is ShaderMaterial:
-			sprite.material.set_shader_parameter("show_outline", false)
+		sprite.material.set_shader_parameter("show_outline", false)
 
 ## Responds to door-state updates from other systems via SignalBus.
 ## @param updated_door_id: Unique door ID that changed.
