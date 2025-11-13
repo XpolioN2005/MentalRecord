@@ -5,12 +5,6 @@ extends VBoxContainer
 @export var game_scene: String
 @export var credits_scene: String
 
-## --- onready variables ---
-@onready var new_game_button: Button = $NewGameButton
-@onready var continue_button: Button = $ContinueButton
-@onready var credits_button: Button = $CreditsButton
-@onready var quit_button: Button = $QuitButton
-
 ## --- private methods ---
 
 ## Starts a new game and loads into the game scene

@@ -5,7 +5,7 @@ extends Node
 var _current_level: Node = null
 var _default_level: String = "res://scenes/rooms/interrogation_room.tscn"
 var _level_stack: Array = []
-var _transitioning: bool = false
+var transitioning: bool = false
 
 ## --- onready variables ---
 @onready var _transition_rect: ColorRect = $TransitionManager/TransitionRect
@@ -23,7 +23,7 @@ func load_start_room() -> void:
 
 ## Changes the room
 func change_room(scene_path: String, door_center: Vector2 = Vector2.ZERO) -> void:
-	if _transitioning:
+	if transitioning:
 		return
 	# Capture current screen before unloading
 	var old_tex: Texture2D = null
@@ -47,14 +47,14 @@ func change_room(scene_path: String, door_center: Vector2 = Vector2.ZERO) -> voi
 	
 	# Play transition
 	if (old_tex):
-		_transitioning = true
+		transitioning = true
 		_transition_rect.play_transition(door_center, old_tex, null, false, func():
-			_transitioning = false
+			transitioning = false
 		)
 
 ## Exits the current room and loads from stack
 func exit_room() -> void:
-	if _transitioning:
+	if transitioning:
 		return
 	if _level_stack.size() <= 1:
 		return
@@ -82,10 +82,21 @@ func exit_room() -> void:
 	
 	# Play transition
 	if (old_tex):
-		_transitioning = true
+		transitioning = true
 		_transition_rect.play_transition(Vector2(get_viewport().size / 2), null, old_tex, true, func():
-			_transitioning = false
+			transitioning = false
 		)
+		
+## Unloads levels and resets to default
+func clear_rooms() -> void:
+	# Remove current room
+	if _current_level and is_instance_valid(_current_level):
+		_current_level.queue_free()
+		
+	# Clear variables
+	_current_level = null
+	_level_stack = []
+	transitioning = false
 
 ## --- private methods ---
 
