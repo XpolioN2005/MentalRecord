@@ -12,8 +12,8 @@ texture = ExtResource("1_weh1r")
 [node name="Statment6" parent="." instance=ExtResource("2_h7444")]
 offset_left = 922.0
 offset_top = 425.0
-offset_right = 1013.0
-offset_bottom = 456.0
+offset_right = 1178.0
+offset_bottom = 517.0
 default_meta = {
 "collected": false,
 "id": "sb6",
@@ -24,8 +24,8 @@ default_meta = {
 [node name="Statment7" parent="." instance=ExtResource("2_h7444")]
 offset_left = 1190.0
 offset_top = 592.0
-offset_right = 1281.0
-offset_bottom = 623.0
+offset_right = 1446.0
+offset_bottom = 684.0
 default_meta = {
 "collected": false,
 "id": "sb7",
