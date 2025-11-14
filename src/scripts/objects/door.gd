@@ -11,10 +11,6 @@ class_name Door
 @export var statement_id_to_unlock: String = "StatementID"
 @export var lie_text: String = "Lie"
 
-# Enable 3D anchoring
-@export var use_3d_anchor: bool = false
-@export var anchor_marker: Marker3D
-
 # --- onready variables ---
 @onready var sprite: TextureRect = $Sprite
 @onready var lie: Label = $Lie
@@ -28,19 +24,6 @@ func _ready() -> void:
 	lie.text = lie_text
 	SignalBus.door_state_changed.connect(received_update_signal)
 
-func _process(_delta: float) -> void:
-	if use_3d_anchor and anchor_marker and camera:
-		update_3d_position()
-
-# --- 3D anchoring support ---
-func update_3d_position() -> void:
-	# Project the 3D marker position to screen space
-	var screen_pos = camera.unproject_position(anchor_marker.global_transform.origin)
-	
-	visible = not get_viewport().get_camera_3d().is_position_behind(anchor_marker.global_transform.origin)
-	
-	# Move Control to projected position
-	position = screen_pos
 
 # --- public methods ---
 
