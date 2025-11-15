@@ -5,16 +5,10 @@ class_name StatementItem
 # --- exported variables ---
 @export var meta: Dictionary = {}
 
-# --- public variables ---
-var canvas_parent: Control = null
-
 # --- internal state ---
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
-var original_parent: Control = null
 var original_pos: Vector2 = Vector2.ZERO
-var original_index := -1
-var placeholder: Control = null
 var _return_tween = null  # SceneTreeTween | null
 
 # --- built-in methods ---
@@ -22,9 +16,6 @@ var _return_tween = null  # SceneTreeTween | null
 func _ready() -> void:
 	set_process_input(true)
 
-func _process(_delta: float) -> void:
-	if is_dragging:
-		global_position = get_global_mouse_position() - drag_offset
 		
 ## --- public methods ---
 
@@ -48,13 +39,16 @@ func do_reveal():
 
 # --- signal handlers ---
 
-func _input(event):
+func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and get_global_rect().has_point(get_global_mouse_position()):
 			drag_offset = get_global_mouse_position() - global_position
 			_start_drag()
-		elif not event.pressed and is_dragging:
-			_end_drag()
+	if event is InputEventMouseMotion and is_dragging:
+		global_position = get_global_mouse_position() - drag_offset
+	elif event is InputEventMouseButton and not event.pressed and is_dragging:
+		_end_drag()
+
 
 ## Starts dragging if the statement is already in the UI.	
 func _start_drag() -> void:
@@ -62,24 +56,15 @@ func _start_drag() -> void:
 		return
 	is_dragging = true
 	original_pos = global_position
-	original_parent = get_parent()
-	original_index = original_parent.get_children().find(self)
-	
-	# Create a placeholder to maintain space in the VBox
-	placeholder = Control.new()
-	placeholder.custom_minimum_size = size
-	original_parent.add_child(placeholder)
-	original_parent.move_child(placeholder, original_index)
 	
 	# Cancel any running return tween when user grabs the button.
 	if _return_tween != null:
 		_return_tween.kill()
 		_return_tween = null
 		
-	# Move to canvas panel so it’s not clipped
-	original_parent.remove_child(self)
-	canvas_parent.add_child(self)
-	position = original_pos
+	set_as_top_level(true)
+	global_position =  original_pos
+
 
 ## Stops dragging and attempts to drop the statement on a Door.
 func _on_button_up() -> void:
@@ -104,7 +89,6 @@ func _on_drop() -> void:
 				if door.statement_id_to_unlock == meta["id"]:
 					InventoryManager.set_dialogue_used(meta["id"])
 					queue_free()
-					_remove_placeholder()
 					door.unlock()
 					return
 				else:
@@ -138,16 +122,5 @@ func _reject(door) -> void:
 func _on_return_tween_finished() -> void:
 	_return_tween = null
 	
-	var root = get_parent()
-	root.remove_child(self)
-	original_parent.add_child(self)
-	original_parent.move_child(self, original_index)
-	position = Vector2.ZERO
-	
-	_remove_placeholder()
-	
-func _remove_placeholder() -> void:
-	# Remove placeholder
-	if placeholder:
-		placeholder.queue_free()
-		placeholder = null
+	set_as_top_level(false)
+	global_position = original_pos
