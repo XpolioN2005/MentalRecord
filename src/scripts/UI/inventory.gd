@@ -42,6 +42,9 @@ func refresh_list(filter_speaker: String = "") -> void:
 	var statements = InventoryManager.get_collected_statements(speaker_filter)
 	for statement in statements:
 		var btn = statement_item_scene.instantiate()
+		# Set icon if available
+		if _speaker_icons.has(speaker_filter):
+			btn.icon = load(_speaker_icons[speaker_filter])
 		inv_slots.add_child(btn)
 		btn.set_meta_info(statement)
 		statement["new"] = false
