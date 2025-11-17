@@ -23,6 +23,7 @@ var _speaker_icons: Dictionary = {
 func _ready():
 	SignalBus.dialogue_added.connect(dialogue_added)
 	refresh_list()
+	_refresh_speaker_filter_menu()
 	
 ## --- public methods ---
 
@@ -89,6 +90,11 @@ func _refresh_speaker_filter_menu():
 			speaker_filter_menu.set_item_icon(idx, load(_speaker_icons[speaker_name]))
 
 		idx += 1
+		
+	if (idx > 0):
+		speaker_filter_menu.show()
+	else:
+		speaker_filter_menu.hide()
 		
 	# Set selected
 	speaker_filter_menu.select(speakers.find(speaker_filter))
