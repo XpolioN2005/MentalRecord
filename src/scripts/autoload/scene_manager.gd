@@ -3,7 +3,7 @@ extends Node
 
 ## --- private variables ---
 var _current_level: Node = null
-var _default_level: String = "res://scenes/test.tscn"
+var _default_level: String = "res://scenes/rooms/room_hallway.tscn"
 var _level_stack: Array = []
 var transitioning: bool = false
 
