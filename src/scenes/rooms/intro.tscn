@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://iykxshyirxhe"]
+
+[ext_resource type="Script" uid="uid://cpsx2f6uac5ab" path="res://scripts/rooms/intro.gd" id="1_63hat"]
+[ext_resource type="Theme" uid="uid://p0hn422nuqnl" path="res://themes/statement_item.tres" id="1_u7h4a"]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_63hat")
+game_scene = "res://scenes/global/game.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 512
+theme_override_constants/margin_right = 512
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PaddingTop" type="ColorRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LetterColor" type="ColorRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1200)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.7105664, 0.65066594, 0.6035094, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/LetterColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -54.5
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/LetterColor/MarginContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_u7h4a")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "
+
+Dear Mrs Keick,
+
+    Your services have been requested in order to help with a private situation we find ourselves in that we would not like too many people knowing about. This is not only due to the sensitive circumstances of the subject, but also due to the potentially delicate intentions of someone that could commit such a crime.
+
+    We at the Museum of Antiquated Artifacts have a long lineage of dealing with the most historically relevant and wondrous artifacts, as you may well know, but we have never found ourselves in such an utterly shocking situation where someone would intentionally create such chaos. Your task is to search for any potential perpetrators after we lost possession of our most recent artifact, an encrusted egg.
+
+    We’re not so sure how much you know about the artifact in question but from our intel we believe you may know some elements of its history, including its relation to another artifact that is no longer in our possession, the Iridium Chicken. While we cannot confirm any connection between the events which led to the Chicken becoming unaccounted for, we hope your investigation can shine further light on the context for the disappearance of two of our most prized artifacts. 
+
+    As the most respected artifact museum in the world, we have done our research, and believe you possess the appropriate know-how to apprehend the culprit without the involvement of the authorities. The Museum is most intrigued by the, let us say, \"influence\" you can have over people and believe this could be the key to your success. Don’t worry, your secret is safe with me. Nobody else at the organisation knows what I know. In fact, it seems that nobody outside of the organisation seems to believe you anyway. 
+
+    Within the building is a corridor of six interrogation rooms we have set up to allow our investigators to work. Inside each room you will find a witness in connection with the incident this morning. These witnesses are believed to have crucial information and potential involvement with the events today.
+
+    To ensure the investigation goes smoothly with such little supervision, I would like to offer some general guidance. I hope you do not mind me telling you how to perform your job, but I remain hopeful that you will utilize the advice with gratitude. I have left for you a notepad for collecting testimony. It would be helpful to collect as many statements as possible about the case from the perspective of each witness. If a witness is standing behind a lie, I have no doubt that a contradictory statement will inevitably surface that you can use to present against it. Lastly, after you break a lie, don't forget to use your special abilities to dive deeper in order to understand the true course of events that have led to this chaos.
+
+    Hopefully, with your intuition, you will be able to get to the bottom of this mess and not only find the egg but also present us with compelling evidence as to who caused its disappearance. We thank you for taking the time to come in today, and should you be successful in catching this foul culprit, we are confident we can provide the generous boost to your wealth and reputation that your career desperately needs.
+
+Take care,
+    MoAA Managing Director Ernest Lieving
+
+"
+autowrap_mode = 3
+
+[node name="PaddingBottom" type="ColorRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1554.0
+offset_top = 988.0
+offset_right = 1729.0
+offset_bottom = 1041.0
+theme_override_font_sizes/font_size = 32
+text = "Continue..."
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

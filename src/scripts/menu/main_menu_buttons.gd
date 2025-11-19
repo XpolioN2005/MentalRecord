@@ -2,6 +2,7 @@ extends VBoxContainer
 # Handles main menu button operations
 
 ## --- exported variables ---
+@export var intro_scene: String
 @export var game_scene: String
 @export var credits_scene: String
 @export var settings: Control
@@ -10,9 +11,8 @@ extends VBoxContainer
 
 ## Starts a new game and loads into the game scene
 func _new_game() -> void:
-	get_tree().change_scene_to_file(game_scene)
+	get_tree().change_scene_to_file(intro_scene)
 	InventoryManager.clear_data()
-	SceneManager.load_start_room()
 	
 ## Loads data from save file and enters game scene
 func _load_game() -> void:
