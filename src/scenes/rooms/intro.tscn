@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://iykxshyirxhe"]
+[gd_scene load_steps=3 format=3 uid="uid://b1wyiqth3jagp"]
 
 [ext_resource type="Script" uid="uid://cpsx2f6uac5ab" path="res://scripts/rooms/intro.gd" id="1_63hat"]
 [ext_resource type="Theme" uid="uid://p0hn422nuqnl" path="res://themes/statement_item.tres" id="1_u7h4a"]
@@ -47,9 +47,8 @@ layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="LetterColor" type="ColorRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1800)
+custom_minimum_size = Vector2(0, 1230)
 layout_mode = 2
-size_flags_vertical = 3
 color = Color(0.7105664, 0.65066594, 0.6035094, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/LetterColor"]
@@ -61,9 +60,7 @@ offset_bottom = 655.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
 
 [node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/LetterColor/MarginContainer"]
 custom_minimum_size = Vector2(512, 0)

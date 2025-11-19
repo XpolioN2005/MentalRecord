@@ -22,7 +22,7 @@ offset_left = 54.0
 offset_top = -396.0
 offset_right = 310.0
 offset_bottom = -304.0
-text = "I took the egg, but then I heard a voice telling me I’d get in trouble… was it my dad?"
+text = "I got scared, and I flushed it... I’m not a bad kid!"
 id = "med3b"
 speaker = "Medium"
 
@@ -31,7 +31,7 @@ offset_left = 475.0
 offset_top = -236.0
 offset_right = 731.0
 offset_bottom = -144.0
-text = "I took the egg, but then I heard a voice telling me I’d get in trouble… was it my dad?"
+text = "Ghosts are real, and I see them. I knew where the egg was because the mummy told me."
 id = "med3c"
 speaker = "Medium"
 
