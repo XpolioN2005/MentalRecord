@@ -42,6 +42,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 16
 alignment = 1
 script = ExtResource("1_1y04j")
+intro_scene = "res://scenes/rooms/intro.tscn"
 game_scene = "res://scenes/global/game.tscn"
 settings = NodePath("../../../../Settings")
 
