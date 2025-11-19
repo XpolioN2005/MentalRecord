@@ -51,14 +51,16 @@ func fade_out_and_exit() -> void:
 
 # Checks for scroll reaching the bottom
 func _on_scroll_changed(_value: float) -> void:
+	
 	if _is_bottom_reached:
 		return
 
 	# How far down the player has scrolled
 	var current := scroll.get_v_scroll_bar().value
+	print(current)
 
 	# Check if scrolled
-	if current >= 500:
+	if current >= 800:
 		_is_bottom_reached = true
 		_show_continue_prompt()
 
