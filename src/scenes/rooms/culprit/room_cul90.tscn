@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://qux03k5q4rha"]
+[gd_scene load_steps=5 format=3 uid="uid://qux03k5q4rha"]
 
 [ext_resource type="PackedScene" uid="uid://ddsqa4t3fxu0k" path="res://scenes/objects/background.tscn" id="1_nh5qw"]
+[ext_resource type="Texture2D" uid="uid://cvfy342cuu7k4" path="res://assets/backgrounds/culprit/fruit/FruitBG.png" id="2_03xxn"]
 [ext_resource type="PackedScene" uid="uid://d3usjuo7k3r75" path="res://scenes/objects/statment.tscn" id="3_3hlkn"]
+[ext_resource type="Texture2D" uid="uid://coyr0yo0bbq3a" path="res://assets/backgrounds/culprit/fruit/FruitMG.png" id="3_56nsu"]
 
 [node name="RoomTemplate" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_nh5qw")]
 position = Vector2(960, 540)
+
+[node name="BackgroundSprite" parent="Background" index="0"]
+texture = ExtResource("2_03xxn")
+
+[node name="MidgroundSprite" parent="Background" index="1"]
+texture = ExtResource("3_56nsu")
 
 [node name="Statment" parent="Background" instance=ExtResource("3_3hlkn")]
 offset_left = -392.0
