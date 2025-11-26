@@ -1,17 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://cri4e16urfx6o"]
+[gd_scene load_steps=25 format=3 uid="uid://cri4e16urfx6o"]
 
 [ext_resource type="Script" uid="uid://c3wivtbuttsvf" path="res://scripts/3d_parts/camera_3d_pan.gd" id="1_tawuf"]
 [ext_resource type="PackedScene" uid="uid://bskk16xpsru6p" path="res://scenes/objects/door3d.tscn" id="2_82mel"]
-[ext_resource type="PackedScene" uid="uid://dx0kfvrg0jxyu" path="res://assets/3d/desk_big.glb" id="3_aib8o"]
 [ext_resource type="PackedScene" uid="uid://d0h4uqw3tuj5e" path="res://assets/3d/ceiling_fan.glb" id="4_6loe8"]
 [ext_resource type="PackedScene" uid="uid://btewwlfu7k27n" path="res://assets/3d/lamp_architect.glb" id="5_6loe8"]
 [ext_resource type="PackedScene" uid="uid://bxrk18lfluu13" path="res://assets/3d/mug.glb" id="6_2brvf"]
 [ext_resource type="Texture2D" uid="uid://by674wyx8d60i" path="res://assets/3d/misc_textures/black-parquet.jpg" id="7_o565m"]
-[ext_resource type="PackedScene" uid="uid://cgwkty3sq6jhp" path="res://assets/3d/chair.glb" id="8_7o1iw"]
 [ext_resource type="Texture2D" uid="uid://3jawsf624ja1" path="res://assets/3d/misc_textures/white-striped-plaster-texture.jpg" id="8_nniwa"]
 [ext_resource type="PackedScene" uid="uid://ctb26negesrwe" path="res://assets/3d/door.glb" id="9_o565m"]
 [ext_resource type="PackedScene" uid="uid://dtq0mr6nftcd3" path="res://assets/3d/internal/Chair.glb" id="11_i3171"]
-[ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/internal/Table (1).glb" id="12_o1jtk"]
+[ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/internal/Table.glb" id="12_o1jtk"]
 
 [sub_resource type="Environment" id="Environment_6loe8"]
 ambient_light_source = 2
@@ -145,10 +143,6 @@ statement_id_to_unlock = ""
 
 [node name="props" type="Node3D" parent="."]
 
-[node name="desk_big" parent="props" instance=ExtResource("3_aib8o")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1, 0, -1.5, 0, -6.556708e-08, 0, 0, -10)
-visible = false
-
 [node name="ceiling_fan" parent="props" instance=ExtResource("4_6loe8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
 
@@ -166,14 +160,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.79582274, 1.2518907,
 
 [node name="door" parent="props" instance=ExtResource("9_o565m")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.7209435, 3.0174775, -19.960133)
-
-[node name="chair" parent="props" instance=ExtResource("8_7o1iw")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.5, -8.5)
-visible = false
-
-[node name="chair2" parent="props" instance=ExtResource("8_7o1iw")]
-transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 0, 1.5, -11.5)
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
