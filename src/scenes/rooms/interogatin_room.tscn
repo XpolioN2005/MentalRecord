@@ -14,10 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/internal/Table (1).glb" id="12_o1jtk"]
 
 [sub_resource type="Environment" id="Environment_6loe8"]
-background_energy_multiplier = 0.3
 ambient_light_source = 2
 ambient_light_color = Color(0.002119937, 0.038033906, 0.07990316, 1)
-tonemap_mode = 4
+tonemap_mode = 2
+tonemap_exposure = 0.25
+tonemap_white = 0.5
 
 [sub_resource type="Animation" id="Animation_buqmo"]
 length = 0.001
@@ -238,14 +239,14 @@ light_energy = 6.0
 shadow_enabled = true
 shadow_bias = 2.5
 spot_range = 22.0
-spot_angle = 50.15
+spot_angle = 60.0
 spot_angle_attenuation = 0.90125036
 
 [node name="Chair2" parent="." instance=ExtResource("11_i3171")]
-transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, -8.5)
+transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, -8.460388)
 
 [node name="Chair3" parent="." instance=ExtResource("11_i3171")]
-transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0, 0, -11.5)
+transform = Transform3D(-0.5143004, 0, 0.3090228, 0, 0.6, 0, -0.3090228, 0, -0.5143004, -0.6065111, 0, -12.033492)
 
 [node name="Table (1)" parent="." instance=ExtResource("12_o1jtk")]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0, 0, -10)
