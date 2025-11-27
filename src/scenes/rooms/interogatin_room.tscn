@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://6v16oob1c0ux" path="res://assets/3d/internal/Mug.glb" id="5_nniwa"]
 [ext_resource type="PackedScene" uid="uid://bdglba7ck4bay" path="res://assets/3d/internal/Lamp.glb" id="6_7o1iw"]
 [ext_resource type="PackedScene" uid="uid://m3ayg4exnfi" path="res://assets/3d/internal/BuildingDoor.glb" id="6_nniwa"]
-[ext_resource type="Texture2D" uid="uid://by674wyx8d60i" path="res://assets/3d/misc_textures/black-parquet.jpg" id="7_o565m"]
+[ext_resource type="Material" uid="uid://dgjnxd3nkoqie" path="res://assets/3d/internal/concrete.tres" id="7_nniwa"]
+[ext_resource type="Material" path="res://assets/3d/internal/plaster.tres" id="8_7o1iw"]
 [ext_resource type="Texture2D" uid="uid://3jawsf624ja1" path="res://assets/3d/misc_textures/white-striped-plaster-texture.jpg" id="8_nniwa"]
 [ext_resource type="PackedScene" uid="uid://dtq0mr6nftcd3" path="res://assets/3d/internal/Chair.glb" id="11_i3171"]
 [ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/internal/Table.glb" id="12_o1jtk"]
@@ -79,13 +80,9 @@ _data = {
 &"env_animation": SubResource("Animation_2brvf")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buqmo"]
-albedo_texture = ExtResource("7_o565m")
-uv1_scale = Vector3(10, 10, 10)
-
 [sub_resource type="QuadMesh" id="QuadMesh_2brvf"]
 lightmap_size_hint = Vector2i(252, 252)
-material = SubResource("StandardMaterial3D_buqmo")
+material = ExtResource("7_nniwa")
 size = Vector2(50, 50)
 orientation = 1
 
@@ -168,7 +165,7 @@ libraries = {
 autoplay = "env_animation"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.0332098, -25)
 mesh = SubResource("QuadMesh_2brvf")
 
 [node name="cell" type="MeshInstance3D" parent="."]
@@ -201,16 +198,19 @@ skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="wall_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6.25, -25)
+material_override = ExtResource("8_7o1iw")
 mesh = SubResource("QuadMesh_o565m")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="wall_1"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.997155, 6.25, -25)
+material_override = ExtResource("8_7o1iw")
 mesh = SubResource("QuadMesh_o565m")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="wall_1"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 6.25, -15.572102)
+material_override = ExtResource("8_7o1iw")
 mesh = SubResource("QuadMesh_7o1iw")
 skeleton = NodePath("../..")
 
