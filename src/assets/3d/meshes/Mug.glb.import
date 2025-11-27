@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtq0mr6nftcd3"
-path="res://.godot/imported/Chair.glb-1d9d4d6178f049ecab54a14481308bf9.scn"
+uid="uid://6v16oob1c0ux"
+path="res://.godot/imported/Mug.glb-e6f2dae811ce496b89090c63e4d74a35.scn"
 
 [deps]
 
-source_file="res://assets/3d/internal/Chair.glb"
-dest_files=["res://.godot/imported/Chair.glb-1d9d4d6178f049ecab54a14481308bf9.scn"]
+source_file="res://assets/3d/meshes/Mug.glb"
+dest_files=["res://.godot/imported/Mug.glb-e6f2dae811ce496b89090c63e4d74a35.scn"]
 
 [params]
 
@@ -37,14 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"Material": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/3d/internal/scratchymetal.tres",
-"use_external/path": "uid://bievsy4rdaupo"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://m3ayg4exnfi"
-path="res://.godot/imported/BuildingDoor.glb-6e67001cf3bcb467c56c7e79c1ad1021.scn"
+uid="uid://dh7bn1khdr5yk"
+path="res://.godot/imported/CeilingFan.glb-d53cb8d1ffb24a6758c5d8dd9ed53f57.scn"
 
 [deps]
 
-source_file="res://assets/3d/internal/BuildingDoor.glb"
-dest_files=["res://.godot/imported/BuildingDoor.glb-6e67001cf3bcb467c56c7e79c1ad1021.scn"]
+source_file="res://assets/3d/meshes/CeilingFan.glb"
+dest_files=["res://.godot/imported/CeilingFan.glb-d53cb8d1ffb24a6758c5d8dd9ed53f57.scn"]
 
 [params]
 
@@ -39,15 +39,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Door": {
+"Blades": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/3d/internal/lightmetal.tres",
-"use_external/path": "uid://q2ejrg0kmkn2"
-},
-"Frame": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/3d/internal/scratchymetal.tres",
-"use_external/path": "uid://bievsy4rdaupo"
+"use_external/fallback_path": "res://assets/3d/internal/greywood.tres",
+"use_external/path": "res://assets/3d/internal/greywood.tres"
 }
 }
 }

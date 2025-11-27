@@ -2,15 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c3wivtbuttsvf" path="res://scripts/3d_parts/camera_3d_pan.gd" id="1_tawuf"]
 [ext_resource type="PackedScene" uid="uid://bskk16xpsru6p" path="res://scenes/objects/door3d.tscn" id="2_82mel"]
-[ext_resource type="PackedScene" uid="uid://dh7bn1khdr5yk" path="res://assets/3d/internal/CeilingFan.glb" id="3_7o1iw"]
-[ext_resource type="PackedScene" uid="uid://6v16oob1c0ux" path="res://assets/3d/internal/Mug.glb" id="5_nniwa"]
-[ext_resource type="PackedScene" uid="uid://bdglba7ck4bay" path="res://assets/3d/internal/Lamp.glb" id="6_7o1iw"]
-[ext_resource type="PackedScene" uid="uid://m3ayg4exnfi" path="res://assets/3d/internal/BuildingDoor.glb" id="6_nniwa"]
-[ext_resource type="Material" uid="uid://dgjnxd3nkoqie" path="res://assets/3d/internal/concrete.tres" id="7_nniwa"]
-[ext_resource type="Material" path="res://assets/3d/internal/plaster.tres" id="8_7o1iw"]
-[ext_resource type="Texture2D" uid="uid://3jawsf624ja1" path="res://assets/3d/misc_textures/white-striped-plaster-texture.jpg" id="8_nniwa"]
-[ext_resource type="PackedScene" uid="uid://dtq0mr6nftcd3" path="res://assets/3d/internal/Chair.glb" id="11_i3171"]
-[ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/internal/Table.glb" id="12_o1jtk"]
+[ext_resource type="PackedScene" uid="uid://dh7bn1khdr5yk" path="res://assets/3d/meshes/CeilingFan.glb" id="3_7o1iw"]
+[ext_resource type="PackedScene" uid="uid://6v16oob1c0ux" path="res://assets/3d/meshes/Mug.glb" id="5_nniwa"]
+[ext_resource type="PackedScene" uid="uid://bdglba7ck4bay" path="res://assets/3d/meshes/Lamp.glb" id="6_7o1iw"]
+[ext_resource type="PackedScene" uid="uid://m3ayg4exnfi" path="res://assets/3d/meshes/BuildingDoor.glb" id="6_nniwa"]
+[ext_resource type="Material" uid="uid://dgjnxd3nkoqie" path="res://assets/3d/materials/concrete.tres" id="7_nniwa"]
+[ext_resource type="Material" uid="uid://20piwuxkcmyx" path="res://assets/3d/materials/plaster.tres" id="8_7o1iw"]
+[ext_resource type="PackedScene" uid="uid://dtq0mr6nftcd3" path="res://assets/3d/meshes/Chair.glb" id="11_i3171"]
+[ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/meshes/Table.glb" id="12_o1jtk"]
 
 [sub_resource type="Environment" id="Environment_6loe8"]
 ambient_light_source = 2
@@ -99,8 +98,11 @@ material = SubResource("StandardMaterial3D_o565m")
 size = Vector2(50, 2.5)
 orientation = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nniwa"]
+load_path = "res://.godot/imported/white-striped-plaster-texture.jpg-31dfb13e544306ab544e6d475c8560d9.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kmqq"]
-albedo_texture = ExtResource("8_nniwa")
+albedo_texture = SubResource("CompressedTexture2D_nniwa")
 uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="QuadMesh" id="QuadMesh_o565m"]

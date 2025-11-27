@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bias5x3acu1wv"
-path.s3tc="res://.godot/imported/plaster_albedo.png-68b5c2a3b382f473908f1f270c5d1764.s3tc.ctex"
+uid="uid://cfaa48oxd6v6u"
+path.s3tc="res://.godot/imported/lightmetal_orm.png-2bc3d3b498476ce7d8358807ea945f6a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/3d/internal/plaster_albedo.png"
-dest_files=["res://.godot/imported/plaster_albedo.png-68b5c2a3b382f473908f1f270c5d1764.s3tc.ctex"]
+source_file="res://assets/3d/materials/lightmetal_orm.png"
+dest_files=["res://.godot/imported/lightmetal_orm.png-2bc3d3b498476ce7d8358807ea945f6a.s3tc.ctex"]
 
 [params]
 

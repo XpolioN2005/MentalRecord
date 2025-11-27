@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfaa48oxd6v6u"
-path.s3tc="res://.godot/imported/lightmetal_orm.png-c3a58a42b36f8aae8b78f586297409a7.s3tc.ctex"
+uid="uid://c7kkx63bu3n5o"
+path.s3tc="res://.godot/imported/scratchymetal_orm.png-c8ef06b7801d1deeef02771bd523ca5c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/3d/internal/lightmetal_orm.png"
-dest_files=["res://.godot/imported/lightmetal_orm.png-c3a58a42b36f8aae8b78f586297409a7.s3tc.ctex"]
+source_file="res://assets/3d/materials/scratchymetal_orm.png"
+dest_files=["res://.godot/imported/scratchymetal_orm.png-c8ef06b7801d1deeef02771bd523ca5c.s3tc.ctex"]
 
 [params]
 

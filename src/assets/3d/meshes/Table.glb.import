@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dh7bn1khdr5yk"
-path="res://.godot/imported/CeilingFan.glb-350efdefb67fe1938d010126a7136eeb.scn"
+uid="uid://c6xpmm7ejwk1b"
+path="res://.godot/imported/Table.glb-eec2db7ea89ede472222994c18fccfdd.scn"
 
 [deps]
 
-source_file="res://assets/3d/internal/CeilingFan.glb"
-dest_files=["res://.godot/imported/CeilingFan.glb-350efdefb67fe1938d010126a7136eeb.scn"]
+source_file="res://assets/3d/meshes/Table.glb"
+dest_files=["res://.godot/imported/Table.glb-eec2db7ea89ede472222994c18fccfdd.scn"]
 
 [params]
 
@@ -39,10 +39,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Blades": {
+"Material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/3d/internal/greywood.tres",
-"use_external/path": "res://assets/3d/internal/greywood.tres"
+"use_external/fallback_path": "res://assets/3d/materials/scratchymetal.tres",
+"use_external/path": "uid://bievsy4rdaupo"
 }
 }
 }
