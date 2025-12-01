@@ -63,7 +63,7 @@ transform = Transform3D(0.37499997, 0, 0, 0, 0.375, 0, 0, 0, 0.37499997, -3.5, -
 transform = Transform3D(-8.742277e-08, 0, -2, 0, 2.0000002, 0, 2, 0, -8.742277e-08, 0, 4.0000005, 0)
 visible = false
 door_id = "halla"
-target_scene = "res://scenes/rooms/curator/room_cur1.tscn"
+target_scene = "res://scenes/rooms/curator/cur1.tscn"
 start_unlocked = true
 
 [node name="BuildingDoor2" parent="doors" instance=ExtResource("2_6ig4y")]

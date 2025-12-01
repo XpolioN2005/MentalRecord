@@ -33,7 +33,9 @@ func _ready() -> void:
 	update_visual()
 	SignalBus.door_state_changed.connect(received_update_signal)
 
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> void: 
+	if not camera:
+		camera = get_viewport().get_camera_3d()
 	if not (display_lie and lie_label and camera and sprite_3d):
 		return
 
