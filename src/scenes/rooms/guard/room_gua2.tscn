@@ -1,13 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://v224c7h43ak2"]
+[gd_scene load_steps=8 format=3 uid="uid://v224c7h43ak2"]
 
 [ext_resource type="PackedScene" uid="uid://ddsqa4t3fxu0k" path="res://scenes/objects/background.tscn" id="1_4j3he"]
+[ext_resource type="Texture2D" uid="uid://y7erd5ega1aw" path="res://assets/backgrounds/guard/StorageBG.png" id="2_f6785"]
 [ext_resource type="PackedScene" uid="uid://cq1v33lmadmcd" path="res://scenes/objects/door.tscn" id="2_m5rti"]
+[ext_resource type="Texture2D" uid="uid://vopghmrbuyr6" path="res://assets/backgrounds/guard/StorageMG.png" id="3_4ujan"]
 [ext_resource type="PackedScene" uid="uid://d3usjuo7k3r75" path="res://scenes/objects/statment.tscn" id="3_trry5"]
+[ext_resource type="Texture2D" uid="uid://bd8tp4rm8r5x1" path="res://assets/doors/guard/GuardDoorClosed.png" id="5_tajvv"]
+[ext_resource type="Texture2D" uid="uid://vypu5hpj1kfi" path="res://assets/doors/guard/GuardDoorOpen.png" id="6_4ujan"]
 
 [node name="RoomTemplate" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_4j3he")]
 position = Vector2(960, 540)
+
+[node name="BackgroundSprite" parent="Background" index="0"]
+texture = ExtResource("2_f6785")
+
+[node name="MidgroundSprite" parent="Background" index="1"]
+texture = ExtResource("3_4ujan")
+
+[node name="Door2" parent="Background" instance=ExtResource("2_m5rti")]
+offset_left = 184.0
+offset_top = -849.0
+offset_right = 184.0
+offset_bottom = -849.0
+door_id = "gua2b"
+locked_sprite = ExtResource("5_tajvv")
+unlocked_sprite = ExtResource("6_4ujan")
+metadata/depth = 0.9
+
+[node name="Lie" parent="Background/Door2" index="0"]
+offset_left = 216.0
+offset_top = 391.0
+offset_right = 728.0
+offset_bottom = 492.0
+text = "THE SET OF ALL SETS DOES NOT CONTAIN ITSELF."
+
+[node name="Sprite" parent="Background/Door2" index="1"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_tajvv")
 
 [node name="Door" parent="Background" instance=ExtResource("2_m5rti")]
 offset_left = -66.0
@@ -16,48 +51,53 @@ offset_right = -66.0
 offset_bottom = 213.0
 door_id = "gua2a"
 target_scene = "res://scenes/rooms/guard/room_gua3.tscn"
+locked_sprite = ExtResource("5_tajvv")
+unlocked_sprite = ExtResource("6_4ujan")
 statement_id_to_unlock = "mol3c"
+metadata/depth = 0.9
 
 [node name="Lie" parent="Background/Door" index="0"]
+offset_left = 468.0
+offset_top = 18.0
+offset_right = 980.0
+offset_bottom = 119.0
 text = "EGG MOVED TO VAULT AFTER DISTURBANCE."
 
-[node name="Door2" parent="Background" instance=ExtResource("2_m5rti")]
-offset_left = 544.0
-offset_top = 282.0
-offset_right = 544.0
-offset_bottom = 282.0
-door_id = "gua2b"
-
-[node name="Lie" parent="Background/Door2" index="0"]
-text = "THE SET OF ALL SETS DOES NOT CONTAIN ITSELF."
+[node name="Sprite" parent="Background/Door" index="1"]
+offset_left = 238.0
+offset_top = -415.0
+offset_right = 1262.0
+offset_bottom = 609.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_tajvv")
 
 [node name="Statment" parent="Background" instance=ExtResource("3_trry5")]
-offset_left = -392.0
-offset_top = -248.0
-offset_right = -136.0
-offset_bottom = -156.0
+offset_left = -75.0
+offset_top = -507.0
+offset_right = 181.0
+offset_bottom = -415.0
 text = "ALARM SOUNDED AND CAUSED PAINT ATTACK. THREAT DETECTED!"
 id = "gua2a"
 speaker = "Guard"
 
 [node name="Statment2" parent="Background" instance=ExtResource("3_trry5")]
-offset_left = 54.0
-offset_top = -396.0
-offset_right = 310.0
-offset_bottom = -304.0
+offset_left = -17.0
+offset_top = -259.0
+offset_right = 239.0
+offset_bottom = -167.0
 text = "SCIENTIST UNDER WATCH. PREVIOUS DISTURBANCES."
 id = "gua2b"
 speaker = "Guard"
 
 [node name="Statment3" parent="Background" instance=ExtResource("3_trry5")]
-offset_left = 475.0
-offset_top = -236.0
-offset_right = 731.0
-offset_bottom = -144.0
+offset_left = 14.0
+offset_top = -41.0
+offset_right = 270.0
+offset_bottom = 51.0
 text = "DURING EMERGENCY, ARTIFACTS MOVED TO VAULT UNLESS STATED OTHERWISE."
 id = "gua2c"
 speaker = "Guard"
 
 [editable path="Background"]
-[editable path="Background/Door"]
 [editable path="Background/Door2"]
+[editable path="Background/Door"]
