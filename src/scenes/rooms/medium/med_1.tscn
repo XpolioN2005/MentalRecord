@@ -268,6 +268,7 @@ offset_bottom = -156.0
 text = "I was visiting the museum with my mom when the alarm rang, and later the building ended up flooding."
 id = "med1a"
 speaker = "Medium"
+metadata/_edit_use_anchors_ = true
 
 [node name="Statment2" parent="Background" instance=ExtResource("15_40bon")]
 offset_left = 50.0
@@ -277,6 +278,7 @@ offset_bottom = -283.0
 text = "There’s a person that listens from under the museum, you know. Their pet died... but you probably won’t believe me."
 id = "med1b"
 speaker = "Medium"
+metadata/_edit_use_anchors_ = true
 
 [node name="Statment3" parent="Background" instance=ExtResource("15_40bon")]
 offset_left = 475.0
@@ -286,6 +288,7 @@ offset_bottom = -144.0
 text = "Can I poke you...?"
 id = "med1c"
 speaker = "Medium"
+metadata/_edit_use_anchors_ = true
 
 [editable path="room/props/Chair3"]
 [editable path="room/props/Table"]

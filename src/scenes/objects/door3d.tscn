@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://dp76re34dkvyy" path="res://themes/lie.tres" id="5_onqkm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_352f5"]
-size = Vector3(2.4643555, 8.339012, 0.44140625)
+size = Vector3(2.4643555, 7, 0.44140625)
 
 [node name="door3d" type="StaticBody3D"]
 script = ExtResource("1_7soci")

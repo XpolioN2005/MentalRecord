@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5dtp3by2mppp"]
+[gd_scene load_steps=22 format=3 uid="uid://b5dtp3by2mppp"]
 
 [ext_resource type="Script" uid="uid://c3wivtbuttsvf" path="res://scripts/3d_parts/camera_3d_pan.gd" id="1_kaivi"]
 [ext_resource type="PackedScene" uid="uid://m3ayg4exnfi" path="res://assets/3d/meshes/BuildingDoor.glb" id="2_6ig4y"]
@@ -7,6 +7,24 @@
 [ext_resource type="Texture2D" uid="uid://crmdow3p5b6a7" path="res://assets/3d/materials/concrete_albedo.png" id="5_i37bp"]
 [ext_resource type="Material" uid="uid://20piwuxkcmyx" path="res://assets/3d/materials/plaster.tres" id="6_a54lq"]
 [ext_resource type="Texture2D" uid="uid://bias5x3acu1wv" path="res://assets/3d/materials/plaster_albedo.png" id="7_ibhsx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kyomf"]
+size = Vector3(2.4643555, 4.2543945, 0.44140625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i37bp"]
+size = Vector3(2.4643555, 4.304199, 0.44140625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a54lq"]
+size = Vector3(2.4643555, 4.2773438, 0.44140625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibhsx"]
+size = Vector3(2.4643555, 4.293091, 0.44140625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85cj4"]
+size = Vector3(2.4643555, 4.4122314, 0.44140625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cnmm"]
+size = Vector3(2.4643555, 4.6694336, 0.44140625)
 
 [sub_resource type="QuadMesh" id="QuadMesh_85cj4"]
 lightmap_size_hint = Vector2i(252, 252)
@@ -66,6 +84,10 @@ door_id = "halla"
 target_scene = "res://scenes/rooms/curator/cur_1.tscn"
 start_unlocked = true
 
+[node name="CollisionShape3D" parent="doors/BuildingDoor/door3d" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1.0000037, 0, 0, 0, 1, 0.034423828, -0.28328216, -0.013671875)
+shape = SubResource("BoxShape3D_kyomf")
+
 [node name="BuildingDoor2" parent="doors" instance=ExtResource("2_6ig4y")]
 transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, -3.5, -1.5, -6)
 
@@ -75,6 +97,10 @@ visible = false
 door_id = "hallb"
 target_scene = "res://scenes/rooms/activist/act_1.tscn"
 start_unlocked = true
+
+[node name="CollisionShape3D" parent="doors/BuildingDoor2/door3d2" index="1"]
+transform = Transform3D(1, 0, -1.0658141e-14, 0, 0.99999857, 0, 1.0658141e-14, 0, 1, 0.034423828, -0.2583958, -0.013671875)
+shape = SubResource("BoxShape3D_i37bp")
 
 [node name="BuildingDoor3" parent="doors" instance=ExtResource("2_6ig4y")]
 transform = Transform3D(0.37499997, 0, 0, 0, 0.37500006, 0, 0, 0, 0.37499997, -3.5, -1.5, -9)
@@ -86,6 +112,10 @@ door_id = "hallc"
 target_scene = "res://scenes/rooms/guard/gua_1.tscn"
 start_unlocked = true
 
+[node name="CollisionShape3D" parent="doors/BuildingDoor3/door3d3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1.0000055, 0, 0, 0, 1, 0.034425735, -0.31088364, -0.0136733055)
+shape = SubResource("BoxShape3D_a54lq")
+
 [node name="BuildingDoor4" parent="doors" instance=ExtResource("2_6ig4y")]
 transform = Transform3D(0.37500003, 0, 0, 0, 0.375, 0, 0, 0, 0.37500003, 3.5, -1.5, -9)
 
@@ -95,6 +125,10 @@ visible = false
 door_id = "halld"
 target_scene = "res://scenes/rooms/medium/med_1.tscn"
 start_unlocked = true
+
+[node name="CollisionShape3D" parent="doors/BuildingDoor4/door3d4" index="1"]
+transform = Transform3D(1, 0, -2.2026825e-13, 0, 1, 0, 2.2026825e-13, 0, 1, 0.034423828, -0.30300903, -0.013671875)
+shape = SubResource("BoxShape3D_ibhsx")
 
 [node name="BuildingDoor5" parent="doors" instance=ExtResource("2_6ig4y")]
 transform = Transform3D(0.37500003, 0, 0, 0, 0.375, 0, 0, 0, 0.37500003, 3.5, -1.5, -6)
@@ -106,6 +140,10 @@ door_id = "halle"
 target_scene = "res://scenes/rooms/mole/mol_1.tscn"
 start_unlocked = true
 
+[node name="CollisionShape3D" parent="doors/BuildingDoor5/door3d5" index="1"]
+transform = Transform3D(1, 0, -3.4816594e-13, 0, 1, 0, 3.4816594e-13, 0, 1, 0.034423828, -0.24343872, -0.013671875)
+shape = SubResource("BoxShape3D_85cj4")
+
 [node name="BuildingDoor6" parent="doors" instance=ExtResource("2_6ig4y")]
 transform = Transform3D(0.37500003, 0, 0, 0, 0.375, 0, 0, 0, 0.37500003, 3.5, -1.5, -3)
 
@@ -113,8 +151,12 @@ transform = Transform3D(0.37500003, 0, 0, 0, 0.375, 0, 0, 0, 0.37500003, 3.5, -1
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, 4, 0)
 visible = false
 door_id = "hallf"
-target_scene = "res://scenes/rooms/scientist/room_sci1.tscn"
+target_scene = "res://scenes/rooms/scientist/sci_1.tscn"
 start_unlocked = true
+
+[node name="CollisionShape3D" parent="doors/BuildingDoor6/door3d6" index="1"]
+transform = Transform3D(1, 0, -5.0448534e-13, 0, 1, 0, 5.0448534e-13, 0, 1, 0.034422874, -0.4481709, -0.013671875)
+shape = SubResource("BoxShape3D_0cnmm")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.83576906, 0.54908115, 0, -0.54908115, 0.83576906, 0, 3.9030132, 0)
@@ -192,3 +234,10 @@ light_energy = 0.5
 light_bake_mode = 1
 omni_range = 7.0
 omni_shadow_mode = 0
+
+[editable path="doors/BuildingDoor/door3d"]
+[editable path="doors/BuildingDoor2/door3d2"]
+[editable path="doors/BuildingDoor3/door3d3"]
+[editable path="doors/BuildingDoor4/door3d4"]
+[editable path="doors/BuildingDoor5/door3d5"]
+[editable path="doors/BuildingDoor6/door3d6"]
