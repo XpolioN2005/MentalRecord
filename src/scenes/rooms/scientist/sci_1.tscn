@@ -229,7 +229,7 @@ libraries = {
 autoplay = "env_animation"
 
 [node name="door3d" parent="." instance=ExtResource("12_y23cl")]
-transform = Transform3D(0.34999993, 0, 0, 0, 0.35000005, 0, 0, 0, 0.34999993, 2.4517198, 1.7173996, -7.945507)
+transform = Transform3D(0.34999993, 0, 0, 0, 0.35000005, 0, 0, 0, 0.34999993, 2.4517198, 2.1334033, -7.945507)
 door_id = "sci1a"
 target_scene = "res://scenes/rooms/scientist/room_sci2.tscn"
 statement_id_to_unlock = "mol1c"
