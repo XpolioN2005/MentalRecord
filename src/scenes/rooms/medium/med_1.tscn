@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://cocbppuv54a31"]
+[gd_scene load_steps=26 format=3 uid="uid://cpvmqtlgc3b2t"]
 
 [ext_resource type="Script" uid="uid://c3wivtbuttsvf" path="res://scripts/3d_parts/camera_3d_pan.gd" id="1_4ovnf"]
 [ext_resource type="PackedScene" uid="uid://dtq0mr6nftcd3" path="res://assets/3d/meshes/Chair.glb" id="2_abu55"]
 [ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/meshes/Table.glb" id="3_j4qmx"]
 [ext_resource type="PackedScene" uid="uid://dh7bn1khdr5yk" path="res://assets/3d/meshes/CeilingFan.glb" id="4_6gof0"]
-[ext_resource type="PackedScene" uid="uid://m3ayg4exnfi" path="res://assets/3d/meshes/BuildingDoor.glb" id="5_t2615"]
 [ext_resource type="PackedScene" uid="uid://6v16oob1c0ux" path="res://assets/3d/meshes/Mug.glb" id="6_cnp0l"]
 [ext_resource type="PackedScene" uid="uid://bdglba7ck4bay" path="res://assets/3d/meshes/Lamp.glb" id="7_sqlhn"]
 [ext_resource type="Material" uid="uid://dgjnxd3nkoqie" path="res://assets/3d/materials/concrete.tres" id="8_ucc64"]
@@ -141,9 +140,6 @@ transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-
 
 [node name="CeilingFan" parent="room/props" instance=ExtResource("4_6gof0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9895895, -10.0129795)
-
-[node name="BuildingDoor" parent="room/props" instance=ExtResource("5_t2615")]
-transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 3.5955353, 0, -15.533062)
 
 [node name="Mug" parent="room/props" instance=ExtResource("6_cnp0l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8259181, 1.2650949, -10.532773)
