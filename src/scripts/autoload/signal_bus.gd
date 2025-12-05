@@ -24,4 +24,8 @@ signal level_stack_updated(stack_size: int)
 ## @param paused_state: New paused state
 signal paused_state_changed(paused_state: bool)
 
+## REQUEST dialogue To show up
+##UI
+signal dialogue_requested(speaker: String, text: String)
+
 @warning_ignore_restore("unused_signal")
