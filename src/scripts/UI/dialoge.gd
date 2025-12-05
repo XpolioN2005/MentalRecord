@@ -52,6 +52,7 @@ func _unhandled_input(event):
 			text_node.visible_ratio = 1.0
 		else:
 			visible = false
+		SignalBus.paused_state_changed.emit(false)
 
 
 func _on_skip_pressed() -> void:
@@ -60,3 +61,4 @@ func _on_skip_pressed() -> void:
 		text_node.visible_ratio = 1.0
 	else:
 		visible = false
+		SignalBus.paused_state_changed.emit(false)

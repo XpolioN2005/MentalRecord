@@ -16,12 +16,18 @@ class_name Door
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
 @onready var zoom_point: Control = $ZoomPoint
 
+# var
+var paused = false
+
+
 # --- built-in methods ---
 
 func _ready() -> void:
 	add_to_group("doors")
 	update_visual()
 	SignalBus.door_state_changed.connect(received_update_signal)
+	SignalBus.paused_state_changed.connect(paused_state_changed)
+
 	
 	if (is_door_unlocked()):
 		lie.hide()
@@ -81,8 +87,9 @@ func unlock() -> void:
 func _on_sprite_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_door_unlocked():
-			var screen_pos = Vector2(get_viewport().size) * zoom_point.global_position/Vector2(1920,1080)
-			SceneManager.change_room(target_scene, screen_pos)
+			if !paused:
+				var screen_pos = Vector2(get_viewport().size) * zoom_point.global_position/Vector2(1920,1080)
+				SceneManager.change_room(target_scene, screen_pos)
 		else:
 			# TODO: Play locked-door sound or show hint.
 			pass
@@ -104,3 +111,7 @@ func _on_mouse_exited() -> void:
 func received_update_signal(updated_door_id: String, _is_open: bool) -> void:
 	if door_id == updated_door_id:
 		update_visual()
+
+## Called when the paused state is changed
+func paused_state_changed(paused_state: bool):
+	paused = paused_state

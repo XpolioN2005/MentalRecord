@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw7l2rxvat3r0"]
+[gd_scene load_steps=11 format=3 uid="uid://cw7l2rxvat3r0"]
 
 [ext_resource type="Script" uid="uid://7u8bkxbvuppd" path="res://scripts/UI/dialoge.gd" id="1_v8m3l"]
+[ext_resource type="Texture2D" uid="uid://clt0u6k4rfmi" path="res://assets/characters/activist.png" id="1_vlfyx"]
 [ext_resource type="Texture2D" uid="uid://bi6okglvgdi14" path="res://assets/characters/mole.png" id="2_0d1px"]
+[ext_resource type="Texture2D" uid="uid://bfnmutti7msjm" path="res://assets/characters/curator.png" id="3_di4px"]
+[ext_resource type="Texture2D" uid="uid://dryf7ip6ddree" path="res://assets/characters/guard.png" id="4_smqal"]
+[ext_resource type="Texture2D" uid="uid://b7ve78fotyyg5" path="res://assets/characters/medium.png" id="5_3dxfc"]
+[ext_resource type="Texture2D" uid="uid://b1y6ib6fye2m" path="res://assets/characters/scientist.png" id="7_10bal"]
+[ext_resource type="Texture2D" uid="uid://dioetyj627ppb" path="res://assets/objects/doorgeneric/Door.png" id="8_eefdx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlfyx"]
 bg_color = Color(0.6313726, 0.3529412, 0.3137255, 1)
@@ -37,6 +43,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v8m3l")
+activist_sprite = ExtResource("1_vlfyx")
+curator_sprite = ExtResource("3_di4px")
+guard_sprite = ExtResource("4_smqal")
+medium_sprite = ExtResource("5_3dxfc")
+mole_sprite = ExtResource("2_0d1px")
+scientist_sprite = ExtResource("7_10bal")
+culprit_sprite = ExtResource("8_eefdx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

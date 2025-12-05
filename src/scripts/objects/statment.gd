@@ -52,4 +52,5 @@ func _on_pressed() -> void:
 		queue_free()
 	)
 
+	SignalBus.paused_state_changed.emit(true)
 	SignalBus.dialogue_requested.emit(speaker, text) 
