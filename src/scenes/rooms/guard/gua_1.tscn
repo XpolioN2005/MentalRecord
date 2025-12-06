@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://clxur51wr8fdf"]
+[gd_scene load_steps=27 format=3 uid="uid://clxur51wr8fdf"]
 
+[ext_resource type="PackedScene" uid="uid://00yhld500vw2" path="res://scenes/music.tscn" id="1_fyh87"]
 [ext_resource type="Script" uid="uid://c3wivtbuttsvf" path="res://scripts/3d_parts/camera_3d_pan.gd" id="1_vwqv2"]
 [ext_resource type="PackedScene" uid="uid://dtq0mr6nftcd3" path="res://assets/3d/meshes/Chair.glb" id="2_fyh87"]
 [ext_resource type="PackedScene" uid="uid://c6xpmm7ejwk1b" path="res://assets/3d/meshes/Table.glb" id="3_it1g3"]
@@ -120,6 +121,15 @@ _data = {
 }
 
 [node name="gua_1" type="Node3D"]
+
+[node name="Music" parent="." instance=ExtResource("1_fyh87")]
+parameters = {
+"stem_bass": 1.0,
+"stem_drums": 0.0,
+"stem_keys": 1.0,
+"stem_strings": 1.0,
+"stem_woodwinds": 1.0
+}
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9341235, 0.16914898, -0.3143277, 0, 0.8805931, 0.47387308, 0.35694996, -0.44265598, 0.8225827, 0.5, 4.259318, -4.5)
