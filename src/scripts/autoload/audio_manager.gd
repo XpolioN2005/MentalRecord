@@ -1,12 +1,27 @@
 extends Node
 
+# -- private variables ---
+var playing: bool = false
+var track_dict: Dictionary = {}
+
 # --- onready variables ---
+@onready var intro_player: AudioStreamPlayer = $IntroPlayer
+@onready var bass: AudioStreamPlayer = $Bass
+@onready var keys: AudioStreamPlayer = $Keys
+@onready var strings: AudioStreamPlayer = $Strings
+@onready var woodwinds: AudioStreamPlayer = $Woodwinds
+@onready var drums: AudioStreamPlayer = $Drums
 @onready var sfx_player: AudioStreamPlayer = $SFXPlayer
-@onready var main_music: FmodEventEmitter2D = $FmodEventEmitter2D
 
 # --- built-in functions ---
 func _ready():
-	pass
+	track_dict = {
+		"stem_bass": bass,
+		"stem_keys": keys,
+		"stem_strings": strings,
+		"stem_woodwinds": woodwinds,
+		"stem_drums": drums
+	}
 
 # --- public methods ---
 
@@ -14,17 +29,29 @@ func _ready():
 ## @param param: The name of the parameter
 ## @param value: The value of the parameter
 func set_main_music_parameter(param: String, value: float):
-	main_music.play(false)
+	if (!playing):
+		start_music()
 	
-	var start: float = FmodServer.get_global_parameter_by_name(param)
+	var track: AudioStreamPlayer = track_dict[param]
+	var start: float = track.volume_db
 	var tween := create_tween()
 	tween.tween_method(func(i):
-		FmodServer.set_global_parameter_by_name(param, i)
-	, start, value, 1.0)
+		track.volume_db = i
+	, start, linear_to_db(value), 1.0)
 	
 ## Stops the main music
 func stop_main_music():
-	main_music.stop()
+	playing = false
+	# Play audio tracks
+	bass.stop()
+	keys.stop()
+	strings.stop()
+	woodwinds.stop()
+	drums.stop()
+	
+func start_music():
+	playing = true
+	intro_player.play()
 	
 ## Plays the given sound effect
 ## @param stream: The audiostream to play
@@ -43,7 +70,6 @@ func play_sfx(stream: AudioStream, volume := 1.0):
 ## @param value: The new volume value
 func set_music_volume(value: float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
-	main_music.volume = db_to_linear(value)
 	
 ## Returns the music volume
 ## @return: The volume
@@ -62,10 +88,10 @@ func get_sound_volume() -> float:
 	
 # --- private methods ---
 
-## Swaps the audio players when fiished transitioning
-func _swap_players():
-	#var temp = active_player
-	#active_player = inactive_player
-	#inactive_player = temp
-	#inactive_player.stop()
-	pass
+func _on_intro_player_finished() -> void:
+	# Play audio tracks
+	bass.play()
+	keys.play()
+	strings.play()
+	woodwinds.play()
+	drums.play()
