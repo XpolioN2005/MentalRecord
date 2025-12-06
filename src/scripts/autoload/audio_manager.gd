@@ -1,61 +1,30 @@
 extends Node
 
-# --- public variables
-var active_player: AudioStreamPlayer
-var inactive_player: AudioStreamPlayer
-var using_variations = true
-
 # --- onready variables ---
-@onready var music_a: AudioStreamPlayer = $MusicPlayerA
-@onready var music_b: AudioStreamPlayer = $MusicPlayerB
 @onready var sfx_player: AudioStreamPlayer = $SFXPlayer
+@onready var main_music: FmodEventEmitter2D = $FmodEventEmitter2D
 
 # --- built-in functions ---
 func _ready():
-	active_player = music_a
-	inactive_player = music_b
+	pass
 
 # --- public methods ---
 
-## Plays music with customizeable fade time
-## @param stream: The audiostream to play
-## @param fade-time: The time to fade
-func play_music(stream: AudioStream, fade_time := 0.0):
-	using_variations = false
-	if fade_time <= 0.0:
-		active_player.stream = stream
-		active_player.play()
-		return
-
-	# Crossfade
-	inactive_player.stream = stream
-	inactive_player.volume_db = -80
-	inactive_player.play()
-
-	var tween := create_tween()
-	tween.tween_property(active_player, "volume_db", -80, fade_time)
-	tween.parallel().tween_property(inactive_player, "volume_db", 0, fade_time)
-
-	tween.finished.connect(_swap_players)
+## Updates the parameter for main music and plays
+## @param param: The name of the parameter
+## @param value: The value of the parameter
+func set_main_music_parameter(param: String, value: float):
+	main_music.play(false)
 	
-## This keeps the new track perfectly aligned rhythmically by jumping to the same playback position.
-## @param stream: The audiostream to play
-## @param fade-time: The time to fade
-func switch_music_variation(new_stream: AudioStream, fade_time := 1.0):
-	if (!using_variations):
-		using_variations = true
-		play_music(new_stream, fade_time)
-	var position := active_player.get_playback_position()
-
-	inactive_player.stream = new_stream
-	inactive_player.volume_db = -40
-	inactive_player.play(position)
-
+	var start: float = FmodServer.get_global_parameter_by_name(param)
 	var tween := create_tween()
-	tween.tween_property(active_player, "volume_db", -40, fade_time)
-	tween.parallel().tween_property(inactive_player, "volume_db", 0, fade_time)
-
-	tween.finished.connect(_swap_players)
+	tween.tween_method(func(i):
+		FmodServer.set_global_parameter_by_name(param, i)
+	, start, value, 1.0)
+	
+## Stops the main music
+func stop_main_music():
+	main_music.stop()
 	
 ## Plays the given sound effect
 ## @param stream: The audiostream to play
@@ -74,6 +43,7 @@ func play_sfx(stream: AudioStream, volume := 1.0):
 ## @param value: The new volume value
 func set_music_volume(value: float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
+	main_music.volume = db_to_linear(value)
 	
 ## Returns the music volume
 ## @return: The volume
@@ -94,7 +64,8 @@ func get_sound_volume() -> float:
 
 ## Swaps the audio players when fiished transitioning
 func _swap_players():
-	var temp = active_player
-	active_player = inactive_player
-	inactive_player = temp
-	inactive_player.stop()
+	#var temp = active_player
+	#active_player = inactive_player
+	#inactive_player = temp
+	#inactive_player.stop()
+	pass
