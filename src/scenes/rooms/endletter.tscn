@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbp45oypqa0ct"]
+[gd_scene load_steps=4 format=3 uid="uid://dbp45oypqa0ct"]
 
 [ext_resource type="Script" uid="uid://cpsx2f6uac5ab" path="res://scripts/rooms/intro.gd" id="1_a66g0"]
 [ext_resource type="Theme" uid="uid://p0hn422nuqnl" path="res://themes/statement_item.tres" id="2_0f8wm"]
+[ext_resource type="PackedScene" uid="uid://00yhld500vw2" path="res://scenes/music.tscn" id="2_440h5"]
 
 [node name="EndLetter" type="Control"]
 layout_mode = 3
@@ -13,6 +14,15 @@ grow_vertical = 2
 script = ExtResource("1_a66g0")
 game_scene = "res://scenes/global/main.tscn"
 is_ending = true
+
+[node name="Music" parent="." instance=ExtResource("2_440h5")]
+parameters = {
+"stem_bass": 1.0,
+"stem_drums": 0.0,
+"stem_keys": 0.0,
+"stem_strings": 0.0,
+"stem_woodwinds": 0.0
+}
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1

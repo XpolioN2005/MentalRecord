@@ -5,11 +5,12 @@
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_dwcjb")
 
-[node name="MusicPlayerA" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmod/Master.bank"]
 
-[node name="MusicPlayerB" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/MentalRecord"
+event_guid = "{4b0cc509-e41a-4ac7-9c45-c1b125267817}"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
