@@ -245,10 +245,13 @@ texture_unlocked = ExtResource("14_fyh87")
 [node name="Sprite3D" parent="door3d" index="0"]
 texture = ExtResource("14_fyh87")
 
-[node name="CollisionShape3D" parent="door3d" index="1"]
+[node name="ShockSprite" parent="door3d" index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.24398, 4.270514, 0.4159298)
+
+[node name="CollisionShape3D" parent="door3d" index="2"]
 transform = Transform3D(1.0000002, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1.0000002, 0.034427643, -0.1932025, -0.013679504)
 
-[node name="ZoomPoint" parent="door3d" index="2"]
+[node name="ZoomPoint" parent="door3d" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2935195, 0)
 
 [node name="Lie" parent="door3d/CanvasLayer" index="0"]
