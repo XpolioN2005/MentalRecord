@@ -10,6 +10,8 @@ var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var original_pos: Vector2 = Vector2.ZERO
 var _return_tween = null  # SceneTreeTween | null
+const PAPER = preload("uid://c1176nj71okrv")
+const UNLOCK = preload("uid://dxlxoy5213tcr")
 
 # --- built-in methods ---
 
@@ -52,6 +54,9 @@ func _gui_input(event):
 func _start_drag() -> void:
 	if (_return_tween != null):
 		return
+		
+	AudioManager.play_sfx(PAPER, 1.0, randf_range(0.8, 1.2))
+		
 	is_dragging = true
 	original_pos = global_position
 	
@@ -86,6 +91,7 @@ func _on_drop() -> void:
 			if my_rect.intersects(rect):
 				if door.statement_id_to_unlock == meta["id"]:
 					InventoryManager.set_dialogue_used(meta["id"])
+					AudioManager.play_sfx(UNLOCK, 1.0, randf_range(0.8, 1.2))
 					queue_free()
 					door.unlock()
 					return
