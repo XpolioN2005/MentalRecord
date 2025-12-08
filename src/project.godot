@@ -17,6 +17,7 @@ General/banks_path="res://fmod"
 config/name="Mental Record"
 run/main_scene="uid://dhj2i7vawwhnx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://lngatyno1hff"
 config/icon="res://icon.svg"
 
 [audio]
