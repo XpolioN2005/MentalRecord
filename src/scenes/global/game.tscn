@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://qwnvu8ckkpcy"]
+[gd_scene load_steps=8 format=3 uid="uid://qwnvu8ckkpcy"]
 
 [ext_resource type="PackedScene" uid="uid://x54ebkynsfi7" path="res://scenes/UI/inventory.tscn" id="1_88tbq"]
 [ext_resource type="Script" uid="uid://bvvws720f0bce" path="res://scripts/game_manager.gd" id="1_k5k1s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5334jomq2ckf" path="res://scenes/UI/pause_menu.tscn" id="3_oib67"]
 [ext_resource type="PackedScene" uid="uid://dy7mamrbbl62h" path="res://scenes/UI/menu_button.tscn" id="4_hcul0"]
 [ext_resource type="PackedScene" uid="uid://brtlbuty384ai" path="res://scenes/UI/settings.tscn" id="6_qawow"]
+[ext_resource type="PackedScene" uid="uid://cw7l2rxvat3r0" path="res://scenes/UI/dialoge.tscn" id="7_qr48s"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_k5k1s")
@@ -32,3 +33,5 @@ offset_bottom = 53.0
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("6_qawow")]
 visible = false
+
+[node name="dialoge" parent="CanvasLayer" instance=ExtResource("7_qr48s")]

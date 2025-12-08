@@ -51,3 +51,6 @@ func _on_pressed() -> void:
 	tween.tween_callback(func():
 		queue_free()
 	)
+
+	SignalBus.paused_state_changed.emit(true)
+	SignalBus.dialogue_requested.emit(speaker, text) 
