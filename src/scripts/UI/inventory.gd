@@ -49,7 +49,11 @@ func refresh_list(filter_speaker: String = "") -> void:
 
 ## Updates the filter based on selection
 func _on_speaker_filter_item_selected(index: int) -> void:
+	AudioManager.play_click()
 	refresh_list(speaker_filter_menu.get_item_metadata(index))
+	
+func _on_speaker_filter_pressed() -> void:
+	AudioManager.play_click()
 
 ## Listens for when a dialogue is added
 func dialogue_added(_dialogue_id: String) -> void:

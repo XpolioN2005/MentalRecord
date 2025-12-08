@@ -35,7 +35,4 @@ bus = &"Music"
 stream = ExtResource("7_s06pa")
 bus = &"Music"
 
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"SFX"
-
 [connection signal="finished" from="IntroPlayer" to="." method="_on_intro_player_finished"]

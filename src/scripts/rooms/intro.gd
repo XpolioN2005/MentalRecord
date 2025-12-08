@@ -64,7 +64,8 @@ func _on_scroll_changed(_value: float) -> void:
 	# Check if scrolled
 	if current >= 0:
 		_is_bottom_reached = true
-		_show_continue_prompt()
+		if (!is_ending):
+			_show_continue_prompt()
 
 # Reveals continue button
 func _show_continue_prompt():
@@ -78,4 +79,6 @@ func _show_continue_prompt():
 
 
 func _on_continue_button_pressed() -> void:
+	AudioManager.play_click()
+	AudioManager.stop_main_music()
 	fade_out_and_exit()

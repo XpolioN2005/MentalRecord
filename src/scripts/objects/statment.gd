@@ -18,6 +18,11 @@ var statement_meta: Dictionary = {
 
 # --- private variables ---
 var _animating = false
+const STATEMENT_SOUNDS = [
+	preload("uid://ctivhp442fnug"),
+	preload("uid://c32k1afe1fut1"),
+	preload("uid://bianvkugah3p")
+]
 
 # --- built-in methods ---
 
@@ -35,6 +40,9 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	if (_animating):
 		return
+	
+	AudioManager.play_sfx(STATEMENT_SOUNDS[randi() % (STATEMENT_SOUNDS.size())])
+		
 	statement_meta["collected"] = true
 
 	InventoryManager.add_dialogue(id, statement_meta.duplicate())

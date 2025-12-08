@@ -74,3 +74,4 @@ offset_bottom = 50.0
 theme = ExtResource("3_lvvmf")
 
 [connection signal="item_selected" from="SpeakerFilter" to="." method="_on_speaker_filter_item_selected"]
+[connection signal="pressed" from="SpeakerFilter" to="." method="_on_speaker_filter_pressed"]

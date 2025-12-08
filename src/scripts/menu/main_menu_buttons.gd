@@ -18,22 +18,27 @@ func _ready() -> void:
 
 ## Starts a new game and loads into the game scene
 func _new_game() -> void:
+	AudioManager.play_click()
 	get_tree().change_scene_to_file(intro_scene)
 	InventoryManager.clear_data()
 	
 ## Loads data from save file and enters game scene
 func _load_game() -> void:
+	AudioManager.play_click()
 	get_tree().change_scene_to_file(game_scene)
 	SceneManager.load_start_room()
 	
 ## Opens the settings menu
 func _open_settings() -> void:
+	AudioManager.play_click()
 	settings.show()
 	
 ## Loads credits scene
 func _goto_credits() -> void:
+	AudioManager.play_click()
 	credits.show()
 	
 ## Quits the game
 func _quit_game() -> void:
+	AudioManager.play_click()
 	get_tree().quit()

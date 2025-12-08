@@ -24,24 +24,33 @@ var _culprit_level_stack: Array = [
 	"res://scenes/rooms/culprit/room_cul0.tscn"
 ]
 
+const TRANSITION_IN = preload("uid://b8dox87qgv5va")
+const TRANSITION_OUT = preload("uid://dio6dab28q0mq")
+const PIPE_SMACK = preload("uid://40gfv6rtjh8j")
+
 ## --- onready variables ---
 @onready var _transition_rect: ColorRect = $TransitionManager/TransitionRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	randomize()
 
 ## --- public methods ---
 
 ## Loads the starting room
 func load_start_room() -> void:
 	# Load level
-	change_room(_default_level)
+	change_room(_default_level, Vector2.ZERO, false)
 
 ## Changes the room
-func change_room(scene_path: String, door_center: Vector2 = Vector2.ZERO) -> void:
+func change_room(scene_path: String, door_center: Vector2 = Vector2.ZERO, play_sound := true) -> void:
 	if transitioning:
 		return
+	
+	# Play sound
+	if (play_sound):
+		AudioManager.play_sfx(TRANSITION_IN, 1.0, randf_range(0.8, 1.2))
+	
 	# Capture current screen before unloading
 	var old_tex: Texture2D = null
 	if _current_level and is_instance_valid(_current_level):
@@ -83,6 +92,9 @@ func exit_room() -> void:
 	if _level_stack.size() <= 1:
 		return
 		
+	# Play sound
+	AudioManager.play_sfx(TRANSITION_OUT, 1.0, randf_range(0.8, 1.2))
+		
 	# Capture current screen before unloading
 	var old_tex: Texture2D = null
 	if _current_level and is_instance_valid(_current_level):
@@ -115,6 +127,9 @@ func exit_room() -> void:
 				# Remove current room
 				if _current_level and is_instance_valid(_current_level):
 					_current_level.queue_free()
+					
+				# Play sound
+				AudioManager.play_sfx(PIPE_SMACK)
 					
 				# Go to end
 				clear_rooms()

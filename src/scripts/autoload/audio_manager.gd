@@ -3,6 +3,7 @@ extends Node
 # -- private variables ---
 var playing: bool = false
 var track_dict: Dictionary = {}
+const CLICK = preload("uid://cniux05mljvby")
 
 # --- onready variables ---
 @onready var intro_player: AudioStreamPlayer = $IntroPlayer
@@ -11,7 +12,6 @@ var track_dict: Dictionary = {}
 @onready var strings: AudioStreamPlayer = $Strings
 @onready var woodwinds: AudioStreamPlayer = $Woodwinds
 @onready var drums: AudioStreamPlayer = $Drums
-@onready var sfx_player: AudioStreamPlayer = $SFXPlayer
 
 # --- built-in functions ---
 func _ready():
@@ -57,15 +57,20 @@ func start_music():
 ## Plays the given sound effect
 ## @param stream: The audiostream to play
 ## @param volume: The volume to play at
-func play_sfx(stream: AudioStream, volume := 1.0):
+func play_sfx(stream: AudioStream, volume := 1.0, pitch := 1.0):
 	var p = AudioStreamPlayer.new()
 	p.bus = "SFX"
 	p.stream = stream
 	p.volume_db = linear_to_db(volume)
+	p.pitch_scale = pitch
 	add_child(p)
 	p.play()
 
 	p.finished.connect(func(): p.queue_free())
+	
+## Plays a click sound
+func play_click():
+	play_sfx(CLICK, 1.0, randf_range(0.8, 1.2))
 	
 ## Sets the music volume
 ## @param value: The new volume value

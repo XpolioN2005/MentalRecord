@@ -13,6 +13,7 @@ func _ready() -> void:
 
 ## Exit room
 func _on_pressed() -> void:
+	AudioManager.play_click()
 	SceneManager.exit_room()
 
 ## Increases size when hovered

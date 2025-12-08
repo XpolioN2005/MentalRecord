@@ -14,6 +14,7 @@ func _ready() -> void:
 ## Open pause menu
 func _on_pressed() -> void:
 	if (!SceneManager.transitioning):
+		AudioManager.play_click()
 		game.toggle_pause()
 
 ## Increases size when hovered

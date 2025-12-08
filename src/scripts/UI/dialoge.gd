@@ -43,21 +43,20 @@ func show_dialogue(speaker: String, text: String) -> void:
 
 	text_node.visible_ratio = 1.0
 
-
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept"):
-		if text_node.visible_ratio < 1.0:
-			skipping = true
-			text_node.visible_ratio = 1.0
-		else:
-			visible = false
-		SignalBus.paused_state_changed.emit(false)
-
-
-func _on_skip_pressed() -> void:
+func do_skip():
+	if (visible):
+		AudioManager.play_click()
 	if text_node.visible_ratio < 1.0:
 		skipping = true
 		text_node.visible_ratio = 1.0
 	else:
 		visible = false
 		SignalBus.paused_state_changed.emit(false)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept"):
+		do_skip()
+
+
+func _on_skip_pressed() -> void:
+	do_skip()
