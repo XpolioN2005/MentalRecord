@@ -51,7 +51,7 @@ This fork exists to:
 ---
 ## 🛠 My Contributions
 
-**XpolioN**
+### **XpolioN** <br>
 Primary technical responsibilities:
 
 * Player interaction and statement systems
