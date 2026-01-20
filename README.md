@@ -5,7 +5,9 @@
   <img src="https://img.shields.io/badge/Genre-Narrative%20Mystery-purple" />
   <img src="https://img.shields.io/badge/Status-Completed-brightgreen" />
   <img src="https://img.shields.io/badge/License-MIT-blue" /> <br>
-  <a herf= "https://github.com/100-Devs-1-Game/MentalRecord"><img src="https://img.shields.io/badge/Upstream-100--Devs--1--Game-black?logo=github" /></a>
+<a href="https://github.com/100-Devs-1-Game/MentalRecord">
+  <img src="https://img.shields.io/badge/Upstream-100--Devs--1--Game-black?logo=github" />
+</a>
 </p>
 
 **Mental Record** is a short narrative-driven mystery game built in Godot, focused on psychological investigation rather than mechanical puzzles. Players interrogate characters, analyze dialogue, and uncover contradictions to expose the truth.
